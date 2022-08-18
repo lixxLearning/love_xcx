@@ -1,0 +1,43 @@
+<!--pages/home/home.wxml-->
+<view class="_container flex-column p_relative ov_hidden bg-img " style="background-image: url('http://mms0.baidu.com/it/u=2777143623,2088012177&fm=253&app=138&f=JPEG&fmt=auto&q=75?w=500&h=889')">
+  <view class="w100">
+    <cu-custom bgColor="bg-gradual-red" title="婚纱照展示"></cu-custom>
+  </view>
+  <view id="main" class="flex1 p_relative" style="left: 0rpx; top: 0rpx">
+  <!-- 音乐 -->
+  <view catchtap="playMusic" class="music {{ isPlay ? 'play_music' : '' }}">
+    <image class="music_icon" src="https://gitee.com/roberthuang123/wedding/raw/master/static/images/music_icon.png" mode="aspectFill" />
+    <image src="https://gitee.com/roberthuang123/wedding/raw/master/static/images/music_play.png" mode="aspectFill" style="transform: rotate({{ isPlay ? '20deg' : '0deg' }});" />
+  </view>
+  <view catchtap="offBarrage" class="p_absolute flex align-center justify-center bg-white off_barrage">
+    <image class="w100 h100" src="{{ show_barrage ? '../../images/close_brrage.png' : '../../images/open_brrage.png' }}" mode="aspectFill"></image>
+  </view>
+    <swiper class="screen-swiper h100" bindanimationfinish="animationend" vertical circular autoplay interval="5000" duration="1000">
+      <swiper-item wx:for="{{displaySwiperList}}">
+        <image src="{{item}}" mode="aspectFill"></image>
+        <!-- <view class="w100 h100" style="background-image: url({{item}});background-size: cover;"></view> -->
+      </swiper-item>
+    </swiper>
+    <view class="indicator-dots flex-column align-center p_absolute">
+      <view class="{{ activeKey === index ? 'lov' : 'dots' }}" wx:for="{{ swiperLen }}"></view>
+    </view>
+    <!-- 弹幕部分 -->
+    <view class="_view bg-img">
+      <block wx:for="{{bulletChatData}}" >
+      <!-- style="animation: first 8s linear forwards;top:{{item.top + 'px'}};" -->
+        <view wx:if="{{ item.nickName || '一位不愿透露姓名的人士' }}" class="item_x_{{ index + 1 }} _item padding-tb-xs padding-lr-xs text-black" style="top:{{item.top + 'px'}};"  data-index="{{ index }}">
+          <view class="cu-avatar round margin-right-sm" style="width: 58rpx;height: 58rpx;background-image: url({{item.avatarUrl || 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fi.qqkou.com%2Fi%2F3a3241284626x3647914565b26.jpg&refer=http%3A%2F%2Fi.qqkou.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1661948543&t=a6f2521ee336f2e945d4da6af4e4656a'}})"></view>
+          感谢
+          <text class="text-blue">{{ item.nickName || '一位不愿透露姓名的人士' }}</text>
+          送出的祝福：
+          <text class="text-red">{{ item.blessMsg }}</text>
+        </view>
+      </block>
+    </view>
+    <include src="../../include/msg.wxml"></include>;
+  </view>
+  <!-- <view class="reset">
+    <button catchtap="open" class="cu-btn round bg-gradual-red lg shadow-blur b_box ">拆开信封</button>
+    <button catchtap="close" class="cu-btn round bg-gradual-red lg shadow-blur b_box ">合上信封</button>
+</view> -->
+</view>

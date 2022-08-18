@@ -1,0 +1,452 @@
+/* pages/home/home.wxss */
+._container {
+  width: 100vw;
+  height: 100vh;
+}
+/* 信封 */
+.letter_word {
+  font-family:cursive;
+  height: 100%;
+  overflow-y: auto;
+}
+.word_line {
+  font-weight: bold;
+  font-size: 38rpx;
+}
+.word_line1 {
+  text-align: justify;
+  line-height: 2em;
+  text-indent: 2em;
+}
+.lov_text {
+  -webkit-background-clip: text;
+  color: transparent;
+  /* 转变为行内块元素 文字渐变才会生效 */
+  display: inline-block; 
+  background-image: linear-gradient(45deg, #f43f3b, #ec008c);
+  width: 5em;
+  transform: translate(-50%, 10px);
+}
+.lov {
+  position:relative;
+  top: 20px;
+  left: 50%;
+  width: 25px;
+  height: 25px;
+  transform: translateX(-50%) rotate(-45deg) scale(1);
+  background-image: linear-gradient(45deg, #f43f3b, #ec008c);
+  animation: beat .25s infinite normal;
+  box-shadow: 0 0 50rpx #da347d;
+  animation: pounding .5s linear infinite alternate;
+}
+@keyframes pounding {
+  0% {
+    transform: translateX(-50%) rotate(-45deg) scale(1);
+  }
+  100% {
+    transform: translateX(-50%) rotate(-45deg) scale(.5);
+  }
+}
+.lov:before {
+  content: "";
+  position:absolute;
+  top: -50%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-image: linear-gradient(45deg, #f43f3b, #ec008c);
+}
+.lov:after{
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(45deg, #f43f3b, #ec008c);
+  border-radius: 50%;
+}
+#envelope {
+  position: relative;
+  width: 92vw;
+  height: 180px;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  margin-left: auto;
+  margin-right: auto;
+  top: 0px;
+  background-color: #eb7885;
+  box-shadow: 0 4px 20px #f5bec2;
+  transition: all .5s;
+}
+
+.front {
+  position: absolute;
+  width: 0;
+  height: 0;
+  z-index: 3;
+}
+
+.flap {
+  border-left: 46vw solid transparent;
+  border-right: 46vw solid transparent;
+  border-bottom: 82px solid transparent;
+  /* a little smaller */
+  border-top: 98px solid #eb7885;
+  /* a little larger */
+  -webkit-transform-origin: top;
+          transform-origin: top;
+}
+
+.pocket {
+  border-left: 46vw solid #ffbbc1;
+  border-right: 46vw solid #ffbbc1;
+  border-bottom: 90px solid #f5b5bb;
+  border-top: 90px solid transparent;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+.letter {
+  position: relative;
+  background-color: #fff;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 90%;
+  top: 5%;
+  border-radius: 6px;
+  box-shadow: 0 2px 26px rgba(0, 0, 0, 0.12);
+}
+
+.letter:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  /* background-image: -webkit-gradient(linear, left top, left bottom, color-stop(25%, rgba(255, 255, 255, 0)), color-stop(55%, rgba(215, 227, 239, 0.7)), to(#fff));
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0) 25%, rgba(215, 227, 239, 0.7) 55%, #fff 100%); */
+}
+
+.open {
+  margin-top: 100px;
+}
+.close {
+  margin-top: 0px;
+}
+
+.open .flap {
+  -webkit-transform: rotateX(180deg);
+          transform: rotateX(180deg);
+  -webkit-transition: z-index .6s, -webkit-transform .4s ease;
+  transition: z-index .6s, -webkit-transform .4s ease;
+  transition: transform .4s ease, z-index .6s;
+  transition: transform .4s ease, z-index .6s, -webkit-transform .4s ease;
+  z-index: 1;
+}
+
+.close .flap {
+  -webkit-transform: rotateX(0deg);
+          transform: rotateX(0deg);
+  -webkit-transition: z-index 1s, -webkit-transform .4s .6s ease;
+  transition: z-index 1s, -webkit-transform .4s .6s ease;
+  transition: transform .4s .6s ease, z-index 1s;
+  transition: transform .4s .6s ease, z-index 1s, -webkit-transform .4s .6s ease;
+  z-index: 5;
+}
+
+.close .letter {
+  -webkit-transform: translateY(0px);
+          transform: translateY(0px);
+  -webkit-transition: z-index 1s, -webkit-transform .4s ease;
+  transition: z-index 1s, -webkit-transform .4s ease;
+  transition: transform .4s ease, z-index 1s;
+  transition: transform .4s ease, z-index 1s, -webkit-transform .4s ease;
+  z-index: 1;
+}
+
+.open .letter {
+  -webkit-transform: translateY(-50px);
+          transform: translateY(-50px);
+  -webkit-transition: z-index .6s, -webkit-transform .4s .6s ease;
+  transition: z-index .6s, -webkit-transform .4s .6s ease;
+  transition: transform .4s .6s ease, z-index .6s;
+  transition: transform .4s .6s ease, z-index .6s, -webkit-transform .4s .6s ease;
+  z-index: 2;
+}
+
+.hearts {
+  position: absolute;
+  top: 90px;
+  left: 0;
+  right: 0;
+  z-index: 2;
+}
+
+.heart {
+  position: absolute;
+  bottom: 0;
+  right: 10%;
+}
+
+.heart:before,
+.heart:after {
+  position: absolute;
+  content: "";
+  left: 50px;
+  top: 0;
+  width: 50px;
+  height: 80px;
+  background: #D00000;
+  border-radius: 50px 50px 0 0;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+  -webkit-transform-origin: 0 100%;
+          transform-origin: 0 100%;
+}
+
+.heart:after {
+  left: 0;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  -webkit-transform-origin: 100% 100%;
+          transform-origin: 100% 100%;
+}
+
+.close .heart {
+  opacity: 0;
+  -webkit-animation: none;
+          animation: none;
+}
+
+.a1 {
+  left: 20%;
+  -webkit-transform: scale(0.6);
+  transform: scale(0.6);
+  opacity: 1;
+  -webkit-animation: slideUp 4s linear 1,  sideSway 2s ease-in-out 4 alternate;
+  -moz-animation: slideUp 4s linear 1,  sideSway 2s ease-in-out 4 alternate;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-delay: .7s;
+          animation-delay: .7s;
+}
+
+.a2 {
+  left: 55%;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  opacity: 1;
+  -webkit-animation: slideUp 5s linear 1,  sideSway 4s ease-in-out 2 alternate;
+  -moz-animation: slideUp 5s linear 1,  sideSway 4s ease-in-out 2 alternate;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-delay: .7s;
+          animation-delay: .7s;
+}
+
+.a3 {
+  left: 10%;
+  -webkit-transform: scale(0.8);
+  transform: scale(0.8);
+  opacity: 1;
+  -webkit-animation: slideUp 7s linear 1,  sideSway 2s ease-in-out 6 alternate;
+  -moz-animation: slideUp 7s linear 1,  sideSway 2s ease-in-out 6 alternate;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-delay: .7s;
+          animation-delay: .7s;
+}
+
+@-webkit-keyframes slideUp {
+  0% {
+    top: 0;
+  }
+  100% {
+    top: -600px;
+  }
+}
+@keyframes slideUp {
+  0% {
+    top: 0;
+  }
+  100% {
+    top: -600px;
+  }
+}
+@-webkit-keyframes sideSway {
+  0% {
+    margin-left: 0px;
+  }
+  100% {
+    margin-left: 50px;
+  }
+}
+@keyframes sideSway {
+  0% {
+    margin-left: 0px;
+  }
+  100% {
+    margin-left: 50px;
+  }
+}
+body {
+  background-color: #a8e2ff;
+}
+
+.envlope-wrapper {
+  height: auto;
+}
+
+.reset {
+  text-align: center;
+}
+
+/* 卡片部分 */
+.pikachu {
+  position: absolute;
+  background: #f9ebaa;
+  height: 8vw;
+  width: 10vw;
+  border-radius: 40%;
+  top: 15vw;
+  display: flex;
+}
+/* 头 */
+.pikachu::before { 
+  content: '';
+  position: absolute;
+  background: #f9ebaa;
+  height: 6vw;
+  width: 9vw;
+  border-radius: 90% 90% 60% 60%;
+  top: -4vw;
+  left: 0.5vw;
+}
+/* 眼睛，脸，脚 */
+.pikachu::after {
+  content: '';
+  position: absolute;
+  background: transparent;
+  height: 1vw;
+  width: 1vw;
+  top: 2vw;
+  left: -1.5vw;
+  color: #4a4947;
+  border-radius: 50%;
+  box-shadow:
+          4vw -3.5vw, 8vw -3.5vw,
+          2vw -2vw #fad598, 10vw -2vw #fad598,
+          3vw 5vw #f9ebaa, 9.3vw 5vw #f9ebaa;
+}
+/* 耳朵 */
+.limbs {
+  position: relative;
+  width: 0;
+  height: 0;
+  border-left: 1vw solid transparent;
+  border-right: 1vw solid transparent;
+  border-bottom: 6vw solid #f9ebaa;
+  border-radius: 80%;
+  top: -6vw;
+  left: 1vw;
+  transform: rotate(-20deg);
+}
+
+.limbs::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 1vw solid transparent;
+  border-right: 1vw solid transparent;
+  border-bottom: 6vw solid #f9ebaa;
+  border-radius: 80%;
+  top: 3vw;
+  left: 5vw;
+  transform: rotate(40deg);
+}
+/* 尾巴 */
+.limbs::before {
+  content: '';
+  position: absolute;
+  background: #f9ebaa;
+  width: 5vw;
+  height: 2vw;
+  border-radius: 40%;
+  top: 10vw;
+  left: 4vw;
+  box-shadow:
+          -1vw 1.5vw #f9ebaa;
+}
+
+.heart {
+  position: relative;
+  width: 5vmin;
+  height: 4vmin;
+  top: 2vmin;
+  left: 0.6vmin;
+}
+.heart:before,
+.heart:after {
+  position: absolute;
+  content: "";
+  left: 2.5vmin;
+  top: 0;
+  width: 2.5vmin;
+  height: 4vmin;
+  background: #fc978b;
+  border-radius: 2.5vmin 2.5vmin 0 0;
+  transform: rotate(-45deg);
+  transform-origin: 0 100%;
+}
+.heart:after {
+  left: 0;
+  transform: rotate(45deg);
+  transform-origin: 100% 100%;
+}
+/* 手 */
+.arms {
+  position: relative;
+  background: #f9ebaa;
+  width: 4.2vmin;
+  height: 2vmin;
+  border-radius: 60% 60% 90% 60% / 50% 50% 90% 90%;
+  top: 3vmin;
+  left: -5vmin;
+}
+.arms::after {
+  content: '';
+  position: absolute;
+  background: #f9ebaa;
+  width: 4vmin;
+  height: 2vmin;
+  border-radius: 60% 60% 90% 60% / 50% 50% 90% 90%;
+  left: 5vmin;
+  top: 0vmin;
+}
+/* 嘴巴 */
+.smile {
+  position: relative;
+  background: transparent;
+  height: 1vmin;
+  width: 1vmin;
+  border-radius: 50%;
+  border-bottom: 0.3vmin solid #4a4947;
+  left: -5vmin;
+  top: -1.3vmin;
+}
+
+.smile::before {
+  position: absolute;
+  content: '';
+  background: transparent;
+  height: 1vmin;
+  width: 1vmin;
+  border-radius: 50%;
+  border-bottom: 0.3vmin solid #4a4947;
+  left: 0.7vmin;
+}

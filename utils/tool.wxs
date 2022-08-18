@@ -1,0 +1,8 @@
+var _includes = function(arr, string) {
+  if (arr !== undefined) { 
+    return arr.indexOf(string || '') != -1
+  }
+}
+module.exports = {
+  _includes: _includes
+};

@@ -1,0 +1,169 @@
+/* pages/home/home.wxss */
+._container {
+  width: 100vw;
+  height: 100vh;
+}
+.dots {
+  width: 15rpx;
+  height: 15rpx;
+  background-color: #f7f7f7;
+  border-radius: 50%;
+}
+/* 播放器 */
+.music {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 999;
+}
+.music > image:first-child {
+  width: 60rpx;
+  height: 60rpx;
+}
+.music > image:nth-child(2) {
+  width: 28rpx;
+  height: 60rpx;
+  margin-left: -10rpx;
+  transform-origin: top;
+  transition: all 1s;
+}
+.play_music > image:first-child {
+  animation: musicRotate 3s linear infinite
+}
+/* 爱的魔力转圈圈 */
+@keyframes musicRotate { 
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes musicStop { 
+  0% {
+    transform: rotate(20deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+@keyframes musicStart { 
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(20deg);
+  }
+}
+    
+/* 爱心指示点 */
+.lov {
+  position:relative;
+  width: 15rpx;
+  height: 15rpx;
+  transform: rotate(-45deg) scale(1);
+  background-image: linear-gradient(45deg, #f43f3b, #ec008c);
+  box-shadow: 0 0 50rpx #da347d;
+  animation: pounding .5s linear infinite alternate;
+}
+@keyframes pounding {
+  0% {
+    transform: rotate(-45deg) scale(1);
+  }
+  100% {
+    transform: rotate(-45deg) scale(.8);
+  }
+}
+.lov:before {
+  content: "";
+  position:absolute;
+  top: -50%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-image: linear-gradient(45deg, #f43f3b, #ec008c);
+}
+.lov:after{
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(45deg, #f43f3b, #ec008c);
+  border-radius: 50%;
+}
+.indicator-dots {
+  top: 50%;
+  right: 20rpx;
+  transform: translateY(-50%);
+  padding: 8px 4px;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, .4);
+}
+
+.indicator-dots > view + view {
+  margin-top: 8px;
+}
+.off_barrage {
+  width: 85rpx;
+  height: 85rpx;
+  border-radius: 50%;
+  padding: 10rpx;
+  bottom: 5vh;
+  right: 5vw;
+  z-index: 9;
+  transition: all .3s;
+  box-shadow: 0 3px 6px -4px #0000001f, 0 6px 16px #00000014, 0 9px 28px 8px #0000000d;
+}
+.off_barrage:active {
+  transform: scale(.8);
+}
+/* 弹幕 */
+.show {
+  opacity: 1;
+}
+.hide {
+  opacity: 0;
+}
+._item {
+  position: absolute;
+  white-space: nowrap;
+  /* 防止向下换行*/
+  animation-timing-function: linear;
+  animation-fill-mode: none;
+  background-color: rgba(255, 255, 255, .7);
+  border-radius: 50px;
+  box-sizing: border-box;
+  transform: translateX(100vw);
+  animation: first 8s linear forwards;
+}
+
+._view {
+  z-index: 3;
+  height: 100%;
+  width: 100vw;
+  margin: 0 auto;
+  position: absolute;
+  overflow-x: hidden;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+@keyframes first {
+  from {
+      transform: translateX(100vw);
+  }
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  to {
+      transform: translateX(-320vw);
+      display: none;
+  }
+}

@@ -1,0 +1,16 @@
+/* components/reserve-date.wxss */
+
+.cu-dialog  {
+  border-top-left-radius: 30rpx;
+  border-top-right-radius: 30rpx;
+}
+
+.today {
+  color: #ffffff;
+  background-color: #1b91ff;
+  border-radius: 10rpx;
+}
+
+.hidden {
+  opacity: 0;
+}

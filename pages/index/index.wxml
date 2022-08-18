@@ -1,0 +1,46 @@
+<!--index.wxml-->
+<!-- https://gd-hbimg.huaban.com/0a17954b21c84eafc45500878a64d210319b218a110a7-IYcIbA_fw658 -->
+<!-- http://music.163.com/song/media/outer/url?id=475479888.mp3 -->
+<!-- http://music.163.com/song/media/outer/url?id=28403111.mp3 -->
+<view class="_container flex-column p_relative ov_hidden bg-img " style="background-image: url({{indexData.bg_img}})">
+  <view class="w100">
+    <cu-custom bgColor="bg-gradual-red" title="我家刘宝的专属"></cu-custom>
+  </view>
+  <button type="primary" bindtap="uploadimg">点我上传</button>
+    <text>图片预览：</text>
+    <image src="{{selctedimg}}"></image>
+  <!-- <image class="bg_img p_absolute" src="{{ bgUrl }}" mode="aspectFill" /> -->
+  <view class="w100 flex1 p_relative text-white text-center" style="letter-spacing: 4px;">
+    <video wx:if="{{ indexData.type == 'video' }}" class="bg_video p_relative" id="myVideo" src="{{indexData.video_url}}" loop muted controls="{{false}}" show-play-btn="{{false}}" show-center-play-btn="{{false}}" enable-progress-gesture="{{false}}" object-fit="cover" autoplay></video>
+    <view wx:if="{{ !indexData.type || indexData.type === 'img' }}" class="w100 h100 flex-column justify-around">
+      <view>
+        <view>
+          <view class="cu-avatar xl round wx_avatar" style="background-image:url(http://mms1.baidu.com/it/u=2400474256,1735561944&fm=253&app=120&f=JPEG&fmt=auto&q=75?w=500&h=500);margin-right: -25rpx;z-index: 2;"></view>
+          <view class="cu-avatar xl round wx_avatar" style="background-image:url(http://mms1.baidu.com/it/u=4046064159,138000984&fm=253&app=120&f=JPEG&fmt=auto&q=75&fmt=auto&q=75?w=500&h=500);"></view>
+        </view>
+        <view class="margin-top-xs">
+          LXX <text class="text-red">❤</text> LYY
+        </view>
+      </view>
+      <view>
+        距2015年2月14日
+      </view>
+      <view class="together">
+        <view>
+          <view>我们已经在一起</view>
+          <view style="font-weight: bold;font-size: 15vw;">{{ days }}</view>
+          <view>DAY</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="b_love">
+    <view>
+      <view class="lov lov_bg" style="top: 100px;"></view>
+      <view catchtap="getUserProfile" class="lov lov_main"></view>
+    </view>
+    <view class="w100 text-red text-df text-bold text-center margin-bottom-xl lov_text">余生很长，请多指教！</view>
+  </view>
+  <!-- <button class="cu-btn round bg-gradual-red lg shadow-blur b_box " style="width: 80%;margin-bottom: 80rpx;" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" bindtap="getUserProfile">come on</button> -->
+  <include src="../../include/msg.wxml"></include>;
+</view>

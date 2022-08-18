@@ -1,0 +1,33 @@
+<!--pages/home/home.wxml-->
+<view class="_container flex-column p_relative ov_hidden bg-img " style="background-image: url('https://gd-hbimg.huaban.com/9596e6b782a89872342f5764e9649c39d2d5c4ad5515f-7EwsKU_fw658')">
+  <view class="w100">
+    <cu-custom bgColor="bg-gradual-red" title="足迹时间轴"></cu-custom>
+  </view>
+
+  <view id="main" class="flex1 p_relative bg-white" style="overflow-y: auto;">
+    <view catchtap="scrollTop" class="p_absolute flex align-center justify-center bg-white sus_btn">
+      <text class="cuIcon-top lg text-black text-bold"></text>
+    </view>
+    <scroll-view id="_top" scroll-y enhanced fast-deceleration scroll-with-animation enable-back-to-top enhanced scroll-into-view="{{ intoView }}" bindscrolltolower="scrolltolower" class="{{ isAnimation ? 'animated' : '' }}" style="height: 100%;">
+      <view id="{{ 'A' + item.datetime }}" class="cu-timeline p_relative" wx:for="{{ list }}">
+        <view class="cu-time text-lg bg-white" style="width: 100%;text-align: left;padding-left: 35rpx;position: sticky;top: 0;z-index: 888;">{{ item.date }}</view>
+        <view id="{{ i.id }}" class="cu-item text-red cuIcon-evaluate_fill topIn" wx:for="{{ item.list }}" wx:key="{{ i.id }}" wx:for-item="i" wx:for-index="x" style="animation-delay: {{ isAnimation ? (i.index - 1) * 0.1 : 0 }}s" >
+          <view class="content align-center bg-red shadow-blur" style="display: flex;padding: 20rpx">
+            <image class="cu-avatar lg round margin-right" src="{{ i.avatarUrl || 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fi.qqkou.com%2Fi%2F3a3241284626x3647914565b26.jpg&refer=http%3A%2F%2Fi.qqkou.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1661948543&t=a6f2521ee336f2e945d4da6af4e4656a' }}" mode="aspectFill" ></image>
+            <view>
+              <text class="text-bold">{{ i.nickName || '一位不愿透露姓名的人士' }}</text>
+              <text class="">
+                在 <text class="">{{ i.time }}</text> 送来了祝福
+              </text>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="page-{{ page }} cu-load bg-white {{ page < maxPage ? 'loading' : 'over' }}"></view>
+    </scroll-view>
+  </view>
+  <view class="text-grey text-df text-center bg-white" style="line-height: 4em;">
+      感谢 {{ total }} 位朋友送来的祝福！
+    </view>
+  <include src="../../include/msg.wxml"></include>
+</view>

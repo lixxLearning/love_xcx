@@ -1,0 +1,53 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/bless/bless",
+    "pages/home/home",
+    "pages/leave_message/leave_message",
+    "pages/footprint/footprint"
+  ],
+  "tabBar": {
+    "color": "#999",
+    "selectedColor": "#df4754",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "死生契阔",
+        "iconPath": "./images/crown.png",
+        "selectedIconPath": "./images/crown_select.png"
+      },
+      {
+        "pagePath": "pages/footprint/footprint",
+        "text": "与子成说",
+        "iconPath": "./images/love.png",
+        "selectedIconPath": "./images/love_select.png"
+      },
+      {
+        "pagePath": "pages/bless/bless",
+        "text": "执子之手",
+        "iconPath": "./images/photo.png",
+        "selectedIconPath": "./images/photo_select.png"
+      },
+      {
+        "pagePath": "pages/leave_message/leave_message",
+        "text": "与子偕老",
+        "iconPath": "./images/pen.png",
+        "selectedIconPath": "./images/pen_select.png"
+      }
+    ]
+  },
+  "window": {
+    "navigationStyle": "custom",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Weixin",
+    "navigationBarTextStyle": "white"
+  },
+  "usingComponents": {
+    "cu-custom": "/colorui/components/cu-custom",
+    "reserve-date": "/components/reserve-date"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,71 @@
+<wxs src="../../utils/tool.wxs" module="tools" ></wxs>
+<view class="_container flex-column p_relative ov_hidden bg-img ">
+  <!-- style="background-image: url('https://gd-hbimg.huaban.com/04de7fc7c1ecaf89192c9ddeda402dd3150cc470760e1-pYlAFj_fw658')" -->
+  <view class="w100">
+    <cu-custom bgColor="bg-gradual-red" title="留言祝福"></cu-custom>
+  </view>
+  <view class="cu-bar search bg-white margin tg-shadow tg-radius">
+    <view class="search-form round" style="background-color: #fff;">
+      <text class="cuIcon-search" style="font-size: 30rpx;"></text>
+      <input bindconfirm="toSearch" type="text" placeholder="请输入你想搜索的留言祝福" confirm-type="search"></input>
+    </view>
+  </view>
+  <!-- style="background-image: url('https://img3.027art.cn/img/2021/09/08/1631101065183289.jpg')" -->
+  <view id="main" class="flex1 b_box p_relative padding-lr padding-bottom-xs" style="background-image: url('https://img3.027art.cn/img/2021/09/08/1631101065183289.jpg')">
+    <view catchtap="scrollTop" class="p_absolute flex align-center justify-center bg-white sus_btn">
+      <text class="cuIcon-top lg text-black text-bold"></text>
+    </view>
+    <scroll-view scroll-y enhanced refresher-enabled fast-deceleration scroll-with-animation enable-back-to-top enhanced scroll-into-view="{{ intoView }}" bindscrolltolower="scrolltolower" bindrefresherrefresh="refresherrefresh" refresher-triggered="{{ isRefresh }}"  class="{{ isAnimation ? 'animated' : '' }}" style="height: 100%;">
+      <view id="{{ item.id }}" class="bg-white topIn tg-shadow padding-lr-lg padding-top-lg b_box p_relative tg-radius bg-img bless_item" style="overflow: visible; opacity: .9;line-height: 2.5em;animation-fill-mode: backwards!important;animation-delay: {{ isAnimation ? index * 0.1 : 0 }}s" wx:for="{{ blessList }}" wx:key="{{ item.id }}">
+        <view class="tg-shadow avatar cu-avatar lg round">
+          <image class="cu-avatar lg round " src="{{ item.avatarUrl || 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fi.qqkou.com%2Fi%2F3a3241284626x3647914565b26.jpg&refer=http%3A%2F%2Fi.qqkou.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1661948543&t=a6f2521ee336f2e945d4da6af4e4656a' }}"></image>
+        </view>
+        <view class="d-flex align-center justify-between margin-bottom margin-top-sm">
+          <view class="text-black text-lg text-bold">
+            {{ item.nickName || '一位不愿透露姓名的人士' }}
+          </view>
+          <view class="text-grey text-sm">{{ item.createTime }}</view>
+        </view>
+        <view class="text-center" style="line-height: 1.8em;">
+          {{ item.blessMsg }}
+        </view>
+        <view class="flex justify-end align-center" style="height: 100rpx;">
+          <view class="text-sm text-grey">（ 觉得不错就点个赞吧！）</view>
+          <view catchtap="tolove" class="p_relative" data-key="{{ item.id }}" class="HeartAnimation {{ item.isLike ? 'like-active' : '' }}">
+            <view class="p_absolute love_num text-bold text-grey text-lg">{{ item.likesNum || 0 }}</view>
+          </view>
+        </view>
+      </view>
+      <view class="page-{{ page }} maxPage-{{ maxPage }} cu-load bg-white {{ page < maxPage ? 'loading' : 'over' }}"></view>
+    </scroll-view>
+    <include src="../../include/msg.wxml"></include>;
+  </view>
+  <view wx:if="{{ isShow }}" class="flex align-center justify-around bg-white padding-tb-sm padding-lr">
+    <button class="flex1 cu-btn round bg-gradual-red lg shadow-blur b_box" bindtap="toBless">留言祝福</button>
+    <image class="bottom_img margin-lr" src="https://img3.027art.cn/img/2021/09/08/1631101065925552.jpg" mode="aspectFill" />
+    <button catchtap="onShare" open-type="share" class="flex1 cu-btn round bg-gradual-red lg shadow-blur b_box ">分享喜悦</button>
+  </view>
+  <!-- <view class="reset">
+    <button catchtap="open" class="cu-btn round bg-gradual-red lg shadow-blur b_box ">拆开信封</button>
+    <button catchtap="close" class="cu-btn round bg-gradual-red lg shadow-blur b_box ">合上信封</button>
+</view> -->
+  <view bindtap="closeBless" class="ra cu-modal bottom-modal {{ showBless ? 'show' : ''}}">
+    <view class="cu-dialog " catchtap>
+      <view class="padding">
+        <view class="text-black text-bold text-center margin-bottom">说点啥呗</view>
+        <textarea class="bless_msg b_fff w100 padding" 	value="{{ blessMsg }}" maxlength="-1" bindinput="textareaAInput" placeholder="在这输入您想说的话"></textarea>
+        <view class="cu-item text-grey text-center text-sm padding-tb">点击选择祝福模板</view>
+        <view style="border-radius: 10px;overflow: hidden;transform: translateY(0); box-shadow: 0 0px 8px #f0f1f2;font-family: cursive;">
+          <scroll-view scroll-y enhanced fast-deceleration style="height: 30vh" enable-back-to-top enhanced>
+            <view class="cu-list menu b_fff padding-sm" >
+              <view catchtap="blessChange" data-msg="{{ item }}" class="cu-item text-left click_active" wx:for="{{ blessDefault }}">
+                {{ item }}
+              </view>
+            </view>
+          </scroll-view>
+        </view>
+        <button catchtap="sendBless" disabled="{{ !blessMsg }}" class="cu-btn round margin-top bg-gradual-blue lg shadow-blur b_box" style="color: #fff;">发送祝福</button>
+      </view>
+    </view>
+  </view>
+</view>

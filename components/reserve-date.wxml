@@ -1,0 +1,35 @@
+<!--components/reserve-date.wxml-->
+<view class="cu-modal bottom-modal {{visbile ? 'show' : ''}}">
+  <view class="cu-dialog" style="border-top-left-radius: 30rpx;border-top-right-radius: 30rpx;transform: translateY(0);">
+    <view class="cu-bar bg-white">
+      <view class="content">
+        <view class="d-flex text-df text-bold flex-column" style="line-height: 1.2em;">选择日期<view class="text-xs text-gray" style="font-weight: normal;">请选择预约日期</view>
+        </view>
+      </view>
+      <text catchtap="close" class="cuIcon-close text-gray margin-left" style="font-size: 40rpx;"></text>
+      <view class="action text-blue text-lg text-bold" style="margin-right: 30rpx;" bindtap="clickToday">今天</view>
+    </view>
+    <!-- 顶部星期栏 -->
+    <view class="d-flex b_fff padding-tb-xs">
+      <view class="flex1 text-center text-bold {{ item.value === 0 ? 'text-red' : '' }}" wx:for="{{ weekList }}" wx:key="index">
+        {{ item.label }}
+      </view>
+    </view>
+
+    <!-- 日期渲染 -->
+    <view style="height: 60vh;" class="ov_auto">
+      <view wx:for="{{ dateList }}" wx:for-item="i" wx:for-index="idx" wx:key="idx">
+        <view class="text-left text-bold padding-left padding-tb-xs">{{ i.date }}</view>
+        <view class="d-flex flex-wrap b_fff radius padding-tb" style="box-shadow: 0 0px 8px#f0f1f2;">
+          <view catchtap="dateClick" data-item="{{ item }}" class="transition padding-tb-xs text-center text-bold {{ selectDate === item.date ? 'today' : '' }}" style="width: {{100/7 + '%'}}" wx:for="{{ i.dateList }}" wx:key="index">
+            <view class="text-xs " style="opacity:{{ today.date === item.date && selectDate === today.date ? '1' : '0' }}">今天</view>
+            <view class="text-sm {{ item.dateTime < today.time || _maxDate.time <= item.dateTime ? 'text-gray' : '' }}">{{ item.label }}</view>
+            <view wx:if="{{ _maxDate.time > item.dateTime }}" style="opacity:{{ statusObj[detail[item.date]].name ? '1' : '0' }}" class="{{ selectDate === item.date ? '' : statusObj[detail[item.date]].color || '' }} text-xs">{{ statusObj[detail[item.date]].name || '不可预约' }}</view>
+            <!-- 暂无 -->
+            <view wx:else class="text-xs text-gray">暂无</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

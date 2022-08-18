@@ -1,0 +1,43 @@
+/* pages/footprint/footprint.wxss */
+._container {
+  width: 100vw;
+  height: 100vh;
+}
+/* 时间轴 */
+.time_line {
+  border-radius: 10px;
+  overflow: hidden;
+}
+.aninode {
+  visibility: hidden;
+}
+.animated .aninode {
+  visibility: visible;
+}
+.animated .topIn {
+  animation: topIn .7s ease;
+}
+@keyframes topIn {
+  from { 
+    transform: translateX(40px);
+    opacity: 0; 
+  }
+  to { 
+    transform: translateX(0px);
+    opacity: 1; 
+  }
+}
+.sus_btn {
+  width: 85rpx;
+  height: 85rpx;
+  border-radius: 50%;
+  padding: 10rpx;
+  bottom: 5vh;
+  right: 5vw;
+  z-index: 999;
+  transition: all .3s;
+  box-shadow: 0 3px 6px -4px #0000001f, 0 6px 16px #00000014, 0 9px 28px 8px #0000000d;
+}
+.sus_btn:active {
+  transform: scale(.8);
+}

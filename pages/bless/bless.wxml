@@ -1,0 +1,63 @@
+<!--pages/home/home.wxml-->
+<view class="_container flex-column p_relative ov_hidden bg-img " style="background-image: url('https://gd-hbimg.huaban.com/9596e6b782a89872342f5764e9649c39d2d5c4ad5515f-7EwsKU_fw658')">
+  <view class="w100">
+    <cu-custom bgColor="bg-gradual-red" title="美好因你而起"></cu-custom>
+  </view>
+
+  <view class="envlope-wrapper margin-tb">
+    <view id="envelope" catchtap="open" class="animation-slide-top {{ isShow ? 'open' : 'close' }}">
+      <view class="front flap"></view>
+      <view class="front pocket p_relative">
+        <view class="lov {{ isShow ? 'animation-shake' : '' }} animation-reverse"></view>
+        <view class="text-red text-df text-bold text-center margin-top lov_text transition">{{ isShow ? '点击查看' : '点击拆封' }}</view>
+      </view>
+      <view class="letter flex justify-center">
+        <view class="text-grey text-bold margin-top">给媳妇儿的表白信</view>
+        <view class="pikachu">
+          <view class="limbs"></view>
+          <view class="heart"></view>
+          <view class="arms"></view>
+          <view class="smile"></view>
+        </view>
+      </view>
+      <view class="hearts">
+        <view class="heart a1"></view>
+        <view class="heart a2"></view>
+        <view class="heart a3"></view>
+      </view>
+    </view>
+  </view>
+  <view id="main" class="flex1 p_relative bg-white tg-radius" style="overflow-y: auto;margin: 0 4vw 3vw;">
+    <swiper class="screen-swiper square-dot h100" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500">
+  <swiper-item wx:for="{{swiperList}}" wx:key>
+    <image src="{{item.url}}" mode="aspectFill" wx:if="{{!item.type}}"></image>
+    <video src="{{item.url}}" autoplay loop muted show-play-btn="{{false}}" controls="{{false}}" objectFit="cover" wx:if="{{item.type=='video'}}"></video>
+  </swiper-item>
+</swiper>
+  </view>
+  <view catchtap="close" class="cu-modal {{showLetter?'show':''}}">
+    <view class="cu-dialog" style="background-color: rgba(0,0,0,0);overflow: visible;">
+      <view class="bg-img" style="background-image: url('https://gd-hbimg.huaban.com/e7455ba0113403bf894c634d1495195439bd624f6bf7-RCNRz6_fw658');height:75vh;border-radius: 8px;">
+        <view class="cu-bar justify-end text-white">
+          <view class="action" bindtap="hideModal">
+            <text class="cuIcon-close "></text>
+          </view>
+        </view>
+      </view>
+      <view class="w100 p_absolute" style="top: 0;left: 0;height: 80vh;padding: 20vw 11vw;">
+        <view class="letter_word" style="overflow-y: auto;">
+          <view class="word_line">给我家宝</view>
+          <view class="word_line1">晴不知夏去，一雨方知秋深.一阵子的秋雨连绵，寒风刺骨过后，幸得近日微风拂过，阳光正好.秋桂逸香，万物可爱.这世间车水马龙，唯有你一眼千年.</view>
+          <view class="word_line1">时光微浅，转瞬即逝.转眼间和你在一起就已经七年了.时间那么长，但又那么短，长到这一喜欢，便是这么多年，而我也越来越了解你，无论是你的可爱，还是发脾气的模样，开心的笑或者委屈的哭，每当想起来都会让我嘴角不自觉的上扬，如果问我什么是喜欢，那就是两个人坐在一起有话说，站起来后有事做，想起对方就会开心的笑，和无条件的为对方付出不求回报.</view>
+          <view class="word_line1 padding-bottom-lg">
+            如果问我为什么喜欢你，我想，再遇见到我的那一刻，你能从我眼里看见笃定的答案.我很幸运,在茫茫人海中,上天安排我与你相识！谁也没曾想过，在我平淡的生活中，突然有了一个可爱身影的出现，使我满心欢喜！终于，我也找到了那个满眼都是我的女孩子，是多么幸运，是多么骄傲.我也曾告诉过自己，不要以貌〝娶”人，但是看到你爱笑的眼睛，浑身散发的可爱气息，还有你那一晒太阳就红彤彤的小脸蛋，顷刻间，我明白了人的偏心也是情有可原的，你将要成为我无数个例外.或许是一见钟情，也或许是情人眼里出西施吧.相见恨晚，但我愿意永远陪伴着你，我爱你，这一点你可以反复的向我确认.
+          </view>
+        </view>
+      </view>
+      <view catchtap="close" class="w100 cu-bar justify-center" style="position: fixed;bottom: 20px;left: 0px">
+        <text class="cuIcon-roundclose text-gray" style="font-size: 50rpx;"></text>
+      </view>
+    </view>
+  </view>
+  <include src="../../include/msg.wxml"></include>
+</view>

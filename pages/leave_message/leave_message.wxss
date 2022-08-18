@@ -1,0 +1,104 @@
+/* pages/leave_message/leave_message.wxss */
+._container {
+  width: 100vw;
+  height: 100vh;
+  background-color: #fafafa;
+}
+.bottom_img {
+  width: 13vw;
+  height: 13vw;
+}
+.avatar {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, -50%);
+}
+.bless_item  {
+  margin-top: 60rpx;
+}
+.aninode {
+  visibility: hidden;
+}
+.animated .aninode {
+  visibility: visible;
+}
+.animated .topIn {
+  animation: topIn .7s ease;
+}
+@keyframes topIn {
+  from { 
+    transform: translateY(40px);
+    opacity: 0; 
+  }
+  to { 
+    transform: translateY(0px);
+    opacity: 1; 
+  }
+}
+.ra .cu-dialog {
+  border-top-left-radius: 25px !important;
+  border-top-right-radius: 25px !important;
+}
+
+/* 点赞 */
+.HeartAnimation {
+  /* position: absolute; */
+  background-image: url(https://uat.tangusoft.com/fileserver/prs/prs/productBill/2207/99638765173645c4ab516f59b878e45e.jpg);
+  background-position: left;
+  background-repeat: no-repeat;
+  height: 100px;
+  width: 100px;
+  right: 0%;
+  bottom: 0%;
+  transform: translate(0%, 0%) scale(.8)
+}
+
+.love_num {
+  right: 15%;
+  top: 50%;
+  transform: translate(50%, -50%);
+}
+
+.like-active {
+  animation-timing-function: steps(28);
+  animation-name: heart-burst;
+  animation-duration: .8s;
+  animation-iteration-count: 1;
+  display: inline-block;
+  animation-fill-mode: forwards;
+
+}
+
+.bless_msg {
+  font-family: cursive;
+  text-align: left;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0px 8px #f0f1f2;
+}
+
+@keyframes heart-burst {
+  0% {
+      background-position: left
+  }
+
+  100% {
+      background-position: right
+  }
+}
+
+.sus_btn {
+  width: 85rpx;
+  height: 85rpx;
+  border-radius: 50%;
+  padding: 10rpx;
+  bottom: 5vh;
+  right: 5vw;
+  z-index: 9;
+  transition: all .3s;
+  box-shadow: 0 3px 6px -4px #0000001f, 0 6px 16px #00000014, 0 9px 28px 8px #0000000d;
+}
+.sus_btn:active {
+  transform: scale(.8);
+}

@@ -1,0 +1,29 @@
+<view class="cu-modal {{ $msg_show ? 'show' : ''}}">
+  <view class="cu-dialog">
+    <view >
+      <view class="cu-bar justify-end text-white">
+        <view class="action" bindtap="$msg_close">
+          <text class="cuIcon-close text-gray"></text>
+        </view>
+      </view>
+      <text class="{{ $icon }} {{ $iconColor }}" style="font-size: 75rpx;display: block;margin-bottom: 35rpx;"></text>
+      <view style="font-size: 30rpx;margin-bottom: 39rpx;">{{ $msg }}</view>
+    </view>
+    <view class="cu-bar bg-white">
+      <view class="action margin-0 flex-sub  solid-left" bindtap="$msg_close">我知道了</view>
+    </view>
+  </view>
+</view>
+<view id="love" class="{{ $load_show ? '' : 'hide_load' }}">
+	<view class="box">
+		<view class="item"></view>
+    <view class="item"></view>
+    <view class="item"></view>
+    <view class="item"></view>
+    <view class="item"></view>
+    <view class="item"></view>
+    <view class="item"></view>
+    <view class="item"></view>
+    <view class="item"></view>
+	</view>
+</view>
