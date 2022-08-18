@@ -6,9 +6,9 @@
   <view class="w100">
     <cu-custom bgColor="bg-gradual-red" title="我家刘宝的专属"></cu-custom>
   </view>
-  <button type="primary" bindtap="uploadimg">点我上传</button>
+  <!-- <button type="primary" bindtap="uploadimg">点我上传</button>
     <text>图片预览：</text>
-    <image src="{{selctedimg}}"></image>
+    <image src="{{selctedimg}}"></image> -->
   <!-- <image class="bg_img p_absolute" src="{{ bgUrl }}" mode="aspectFill" /> -->
   <view class="w100 flex1 p_relative text-white text-center" style="letter-spacing: 4px;">
     <video wx:if="{{ indexData.type == 'video' }}" class="bg_video p_relative" id="myVideo" src="{{indexData.video_url}}" loop muted controls="{{false}}" show-play-btn="{{false}}" show-center-play-btn="{{false}}" enable-progress-gesture="{{false}}" object-fit="cover" autoplay></video>
